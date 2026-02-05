@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云服务器部署教程 - Clawdbot 教程</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回首页</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="page-header cloud-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                返回选择页面
+            </a>
+            <h1>☁️ 云服务器部署教程</h1>
+            <p class="subtitle">7×24 小时在线，手机也能用</p>
+        </div>
+    </section>
+
+    <!-- 内容 -->
+    <section class="tutorial">
+        <div class="container">
+            <!-- 步骤导航 -->
+            <div class="step-nav">
+                <a href="#step1" class="step-link active">购买服务器</a>
+                <a href="#step2" class="step-link">连接服务器</a>
+                <a href="#step3" class="step-link">安装 Docker</a>
+                <a href="#step4" class="step-link">部署 Clawdbot</a>
+                <a href="#step5" class="step-link">域名访问</a>
+            </div>
+
+            <!-- Step 1: 购买服务器 -->
+            <div id="step1" class="tutorial-section">
+                <h2><span class="step-num">1</span> 购买服务器</h2>
+                <p class="section-desc">云服务器是运行 Clawdbot 的"电脑"，只是它在云端，永远不会关机。</p>
+
+                <div class="cloud-options">
+                    <div class="cloud-card">
+                        <div class="cloud-logo aliyun">
+                            <i class="fab fa-alipay"></i>
+                        </div>
+                        <h4>阿里云</h4>
+                        <p class="price">新用户约 20-30 元/月</p>
+                        <ul>
+                            <li>✅ 学生机 9.9 元/月（适合尝鲜）</li>
+                            <li>✅ 2核 2GB 基础配置约 50-80 元/月</li>
+                            <li>✅ 国内访问速度快</li>
+                            <li>⚠️ 需要域名备案</li>
+                        </ul>
+                        <a href="https://www.aliyun.com" target="_blank" class="btn btn-outline">前往阿里云</a>
+                    </div>
+
+                    <div class="cloud-card">
+                        <div class="cloud-logo tencent">
+                            <i class="fab fa-cloudversify"></i>
+                        </div>
+                        <h4>腾讯云</h4>
+                        <p class="price">新用户约 20-30 元/月</p>
+                        <ul>
+                            <li>✅ 新用户优惠大</li>
+                            <li>✅ 2核 2GB 约 50-70 元/月</li>
+                            <li>✅ 微信生态接入方便</li>
+                            <li>⚠️ 需要域名备案</li>
+                        </ul>
+                        <a href="https://cloud.tencent.com" target="_blank" class="btn btn-outline">前往腾讯云</a>
+                    </div>
+
+                    <div class="cloud-card">
+                        <div class="cloud-logo foreign">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4>海外服务器</h4>
+                        <p class="price">约 5-20 美元/月</p>
+                        <ul>
+                            <li>✅ 不需要备案</li>
+                            <li>✅ 即买即用</li>
+                            <li>✅ 支持 PayPal/信用卡</li>
+                            <li>⚠️ 国内访问可能较慢</li>
+                        </ul>
+                        <p class="examples">如：CloudCone、Contabo、BandwagonHost 等</p>
+                    </div>
+                </div>
+
+                <div class="recommendation-box">
+                    <h4>🎯 推荐配置</h4>
+                    <p>对于个人使用，推荐 <strong>2核 2GB</strong> 或 <strong>2核 4GB</strong> 配置，完全够用。</p>
+                </div>
+            </div>
+
+            <!-- Step 2: 连接服务器 -->
+            <div id="step2" class="tutorial-section">
+                <h2><span class="step-num">2</span> 连接服务器</h2>
+                <p class="section-desc">买到服务器后，需要通过 SSH 连接到它。</p>
+
+                <div class="info-box">
+                    <h4>📋 你会收到以下信息：</h4>
+                    <ul>
+                        <li>服务器 IP 地址（如：123.45.67.89）</li>
+                        <li>SSH 端口（默认 22）</li>
+                        <li>用户名（通常是 root）</li>
+                        <li>密码（或 SSH 密钥）</li>
+                    </ul>
+                </div>
+
+                <h4>🔗 连接方式</h4>
+                <div class="os-tabs">
+                    <button class="os-btn active" data-os="macssh">🍎 Mac / Linux</button>
+                    <button class="os-btn" data-os="windowsssh">🪟 Windows</button>
+                </div>
+
+                <div class="os-content">
+                    <div class="os-panel active" id="macssh">
+                        <div class="code-block">
+                            <pre><code># 打开终端，输入以下命令
+ssh root@你的服务器IP
+
+# 第一次连接会提示，输入 yes
+# 然后输入密码（输入时不可见，输入完成后按回车）</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="os-panel" id="windowsssh">
+                        <p>Windows 用户推荐使用 <strong>PowerShell</strong> 或 <strong>Windows Terminal</strong>：</p>
+                        <div class="code-block">
+                            <pre><code># 或使用 Xshell、PuTTY 等工具
+ssh root@你的服务器IP</code></pre>
+                        </div>
+                        <p class="tip">💡 推荐下载 <a href="https://windowsterminal.dev" target="_blank">Windows Terminal</a>，体验更好。</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-key"></i>
+                    <div>
+                        <strong>🔐 安全提醒</strong>
+                        <p>首次登录后，建议：</p>
+                        <ol>
+                            <li>修改 root 密码：<code>passwd</code></li>
+                            <li>创建新用户（不是必须，但更安全）</li>
+                            <li>配置 SSH 密钥登录（更安全）</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: 安装 Docker -->
+            <div id="step3" class="tutorial-section">
+                <h2><span class="step-num">3</span> 安装 Docker</h2>
+                <p class="section-desc">Docker 可以让 Clawdbot 运行更简单，不需要手动配置环境。</p>
+
+                <div class="code-block">
+                    <pre><code># 安装 Docker（所有 Linux 通用）
+curl -fsSL https://get.docker.com | sh
+
+# 启动 Docker 服务
+sudo systemctl start docker
+
+# 设置开机自启
+sudo systemctl enable docker
+
+# 验证安装
+docker --version  # 应该显示 Docker 版本号</code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>💡 为什么用 Docker？</strong>
+                        <p>Docker 把 Clawdbot 和它的依赖打包在一起，<br>不需要手动安装 Node.js、pnpm 等工具，安装更简单。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: 部署 Clawdbot -->
+            <div id="step4" class="tutorial-section">
+                <h2><span class="step-num">4</span> 部署 Clawdbot</h2>
+
+                <div class="step-sub">
+                    <h4>4.1 创建目录</h4>
+                    <div class="code-block">
+                        <pre><code># 创建数据目录
+mkdir -p /opt/clawdbot/data
+cd /opt/clawdbot</code></pre>
+                    </div>
+                </div>
+
+                <div class="step-sub">
+                    <h4>4.2 创建配置文件</h4>
+                    <div class="code-block">
+                        <pre><code># 创建配置文件
+cat > config.yaml << 'EOF'
+# Clawdbot 配置文件
+server:
+  host: "0.0.0.0"
+  port: 3000
+
+ai:
+  provider: "openai"  # 可选: openai, anthropic, deepseek
+  api_key: "你的API_KEY"
+
+plugins:
+  enabled:
+    - weather
+    - news
+EOF</code></pre>
+                    </div>
+                    <div class="warning-box">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>注意：</strong>把 <code>你的API_KEY</code> 替换成你实际的 API Key。</p>
+                    </div>
+                </div>
+
+                <div class="step-sub">
+                    <h4>4.3 启动容器</h4>
+                    <div class="code-block">
+                        <pre><code># 启动 Clawdbot
+docker run -d \
+  --name clawdbot \
+  -p 3000:3000 \
+  -v /opt/clawdbot/data:/app/data \
+  -v /opt/clawdbot/config:/app/config \
+  -e NODE_ENV=production \
+  clawdbot/clawdbot:latest
+
+# 查看运行状态
+docker ps
+
+# 查看日志（如果有问题）
+docker logs -f clawdbot</code></pre>
+                    </div>
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>🎉 看到 "Server started on http://0.0.0.0:3000" 就说明成功了！</strong>
+                        <p>现在你可以通过 <code>http://你的服务器IP:3000</code> 访问 Clawdbot 了。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: 域名访问（可选） -->
+            <div id="step5" class="tutorial-section">
+                <h2><span class="step-num">5</span> 域名访问（可选）</h2>
+                <p class="section-desc">如果你有域名，可以绑定一个，方便记忆。</p>
+
+                <div class="info-box">
+                    <h4>📝 域名配置步骤：</h4>
+                    <ol>
+                        <li>购买一个域名（各大域名商均可）</li>
+                        <li>在域名服务商后台添加 A 记录：
+                            <ul>
+                                <li>主机记录：www 或 @</li>
+                                <li>记录值：你的服务器 IP</li>
+                            </ul>
+                        </li>
+                        <li>等待 DNS 生效（通常几分钟到几小时）</li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>⚠️ 国内服务器注意</strong>
+                        <p>如果使用阿里云、腾讯云等<strong>国内</strong>服务器，域名需要<strong>备案</strong>才能访问。</p>
+                        <p>如果不想备案，可以选择<strong>海外服务器</strong>。</p>
+                    </div>
+                </div>
+
+                <h4>🔒 配置 HTTPS（推荐）</h4>
+                <p>生产环境建议启用 HTTPS，可以使用 Let's Encrypt 免费证书：</p>
+                <div class="code-block">
+                    <pre><code># 安装 Nginx 反向代理
+docker run -d \
+  --name nginx \
+  -p 80:80 \
+  -p 443:443 \
+  -v /opt/nginx/conf.d:/etc/nginx/conf.d \
+  nginx:alpine</code></pre>
+                </div>
+            </div>
+
+            <!-- 维护 -->
+            <div id="maintain" class="tutorial-section">
+                <h2><span class="step-num">🔧</span> 日常维护</h2>
+
+                <div class="maintain-grid">
+                    <div class="maintain-card">
+                        <h4>🔄 更新版本</h4>
+                        <div class="code-block">
+                            <pre><code># 拉取最新镜像
+docker pull clawdbot/clawdbot:latest
+
+# 重启容器
+docker restart clawdbot</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="maintain-card">
+                        <h4>📊 查看日志</h4>
+                        <div class="code-block">
+                            <pre><code># 实时日志
+docker logs -f clawdbot
+
+# 最近 100 行日志
+docker logs --tail 100 clawdbot</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="maintain-card">
+                        <h4>⏹️ 停止服务</h4>
+                        <div class="code-block">
+                            <pre><code># 停止
+docker stop clawdbot
+
+# 删除容器（不会删除数据）
+docker rm clawdbot</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 常见问题 -->
+            <div id="faq" class="tutorial-section">
+                <h2><span class="step-num">❓</span> 常见问题</h2>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>端口 3000 访问不了？</h4>
+                        <p>检查安全组/防火墙是否开放 3000 端口。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Docker 安装失败？</h4>
+                        <p>检查系统版本，Docker 需要 Linux Kernel 3.10+。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>域名不生效？</h4>
+                        <p>检查 DNS 记录是否正确，用 <code>ping 你的域名</code> 测试。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>怎么备份数据？</h4>
+                        <p>定期备份 <code>/opt/clawdbot/data</code> 目录即可。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 下一步 -->
+            <div class="next-steps">
+                <h3>🚀 下一步</h3>
+                <p>服务已经部署好了！接下来你可以：</p>
+                <ul>
+                    <li>📖 访问 <code>http://你的服务器IP:3000</code> 完成初始化</li>
+                    <li>💬 加入 <a href="https://discord.gg/clawd" target="_blank">Discord 社区</a> 提问交流</li>
+                    <li>📱 参考 <a href="https://docs.clawd.bot" target="_blank">官方文档</a> 配置微信/Telegram 接入</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="../index.html" class="back-to-home">
+                    <i class="fas fa-arrow-left"></i>
+                    返回首页
+                </a>
+                <div class="footer-brand">
+                    <p>📝 本教程参考了 <a href="https://mp.weixin.qq.com/s/gRCZdwyK3xoD3VLrvxdDjQ" target="_blank">数字生命卡兹克</a>、<a href="https://mp.weixin.qq.com/s/4-xit1hBs42CQEzJZmxsVw" target="_blank">卡尔的AI沃茨</a> 等博主的分享</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

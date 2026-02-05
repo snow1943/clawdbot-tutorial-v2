@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clawdbot 教程 - 从零搭建你的AI助手</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-robot"></i>
+                <span>Clawdbot</span>
+                <span class="badge">教程站</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    开源免费 · 保姆级教程
+                </div>
+                <h1>从零搭建<br>你的 <span class="gradient-text">AI 助手</span></h1>
+                <p class="hero-subtitle">
+                    这是一个<strong>普通博主</strong>整理的 Clawdbot 教程，<br>
+                    帮你从零开始搭建专属的 AI 助手 💪
+                </p>
+                <p class="hero-note">
+                    <i class="fas fa-info-circle"></i>
+                    Clawdbot 是一个开源的 AI 助手框架，可以接入微信、Telegram、飞书等平台
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 选择部署方式 -->
+    <section class="selection">
+        <div class="container">
+            <h2 class="section-title">选择你的部署方式</h2>
+            <p class="section-subtitle">根据你的需求，选择最适合的方式 👇</p>
+
+            <div class="options">
+                <!-- 本地电脑 -->
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>💻 本地电脑</h3>
+                    <div class="price-tag">
+                        <span class="price">完全免费</span>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>优点</h4>
+                            <ul>
+                                <li>💰 不花钱，白嫖党首选</li>
+                                <li>🔧 配置简单，小白也能搞定</li>
+                                <li>🛡️ 数据完全在自己电脑上</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>缺点</h4>
+                            <ul>
+                                <li>📴 关机就断，无法7×24小时运行</li>
+                                <li>🏠 只能在家里/办公室用</li>
+                                <li>📱 手机上没法直接用</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="meta-info">
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>安装时间：约 10 分钟</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-signal"></i>
+                            <span>难度：⭐ 简单</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>适合：个人尝鲜</span>
+                        </div>
+                    </div>
+
+                    <a href="pages/local.html" class="btn btn-primary btn-block">
+                        <i class="fas fa-arrow-right"></i>
+                        开始本地部署
+                    </a>
+                </div>
+
+                <!-- 云服务器 -->
+                <div class="option-card featured">
+                    <div class="featured-badge">推荐</div>
+                    <div class="option-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>☁️ 云服务器</h3>
+                    <div class="price-tag">
+                        <span class="price">约 20-30 元/月</span>
+                    </div>
+                    
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>优点</h4>
+                            <ul>
+                                <li>⚡ 7×24 小时在线，永不关机</li>
+                                <li>📱 手机也能用，随时随地</li>
+                                <li>🚀 微信/Telegram 等都能接入</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>缺点</h4>
+                            <ul>
+                                <li>💸 需要花钱买服务器</li>
+                                <li>🔧 需要一点技术基础</li>
+                                <li>🌐 需要域名备案（如用国内服务器）</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="meta-info">
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>安装时间：约 15 分钟</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-signal"></i>
+                            <span>难度：⭐⭐ 入门</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>适合：长期使用</span>
+                        </div>
+                    </div>
+
+                    <a href="pages/cloud.html" class="btn btn-primary btn-block">
+                        <i class="fas fa-arrow-right"></i>
+                        开始云服务器部署
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速对比 -->
+    <section class="comparison">
+        <div class="container">
+            <h2 class="section-title">快速对比</h2>
+            
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>对比项</th>
+                        <th>💻 本地电脑</th>
+                        <th>☁️ 云服务器</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>费用</td>
+                        <td class="highlight">免费</td>
+                        <td>20-30元/月</td>
+                    </tr>
+                    <tr>
+                        <td>运行时间</td>
+                        <td>关机就停</td>
+                        <td class="highlight">7×24小时</td>
+                    </tr>
+                    <tr>
+                        <td>使用范围</td>
+                        <td>仅限当前设备</td>
+                        <td class="highlight">随时随地</td>
+                    </tr>
+                    <tr>
+                        <td>微信接入</td>
+                        <td>❌ 不支持</td>
+                        <td class="highlight">✅ 支持</td>
+                    </tr>
+                    <tr>
+                        <td>技术要求</td>
+                        <td class="highlight">⭐ 简单</td>
+                        <td>⭐⭐ 入门</td>
+                    </tr>
+                    <tr>
+                        <td>数据安全</td>
+                        <td class="highlight">💯 完全本地</td>
+                        <td>在自己服务器上</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 推荐人群 -->
+    <section class="recommendation">
+        <div class="container">
+            <h2 class="section-title">你应该选择哪个？</h2>
+            
+            <div class="rec-cards">
+                <div class="rec-card">
+                    <div class="rec-icon">🎯</div>
+                    <h4>选本地电脑，如果：</h4>
+                    <ul>
+                        <li>只是想尝鲜体验一下</li>
+                        <li>预算为 0</li>
+                        <li>不需要 7×24 小时运行</li>
+                        <li>技术基础较弱</li>
+                    </ul>
+                </div>
+                
+                <div class="rec-card recommended">
+                    <div class="rec-icon">🚀</div>
+                    <h4>选云服务器，如果：</h4>
+                    <ul>
+                        <li>想要长期稳定使用</li>
+                        <li>需要用微信/Telegram 接入</li>
+                        <li>想要随时随地访问</li>
+                        <li>愿意花一点钱（约 20-30元/月）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 致谢 -->
+    <section class="credits">
+        <div class="container">
+            <h2 class="section-title">🙏 感谢参考</h2>
+            <p class="credits-desc">本教程参考了以下优秀博主的分享：</p>
+            
+            <div class="credits-list">
+                <a href="https://x.com/lxfater/status/2015949596544110974" target="_blank" class="credit-item">
+                    <div class="credit-avatar">👤</div>
+                    <div class="credit-info">
+                        <span class="credit-name">@lxfater</span>
+                        <span class="credit-desc">Twitter 分享</span>
+                    </div>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+
+                <a href="https://mp.weixin.qq.com/s/gRCZdwyK3xoD3VLrvxdDjQ" target="_blank" class="credit-item">
+                    <div class="credit-avatar">📱</div>
+                    <div class="credit-info">
+                        <span class="credit-name">数字生命卡兹克</span>
+                        <span class="credit-desc">保姆级 Clawdbot 教程</span>
+                    </div>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+
+                <a href="https://mp.weixin.qq.com/s/4-xit1hBs42CQEzJZmxsVw" target="_blank" class="credit-item">
+                    <div class="credit-avatar">📱</div>
+                    <div class="credit-info">
+                        <span class="credit-name">卡尔的AI沃茨</span>
+                        <span class="credit-desc">Clawdbot 超级小白入门指南</span>
+                    </div>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <p class="credits-note">
+                💡 如果你也写了 Clawdbot 教程，欢迎联系我，我会持续更新感谢名单！
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-robot"></i>
+                        <span>Clawdbot 教程</span>
+                    </div>
+                    <p>一个普通博主整理的 Clawdbot 教程<br>帮助更多人一起来玩转 AI 助手 💪</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/clawdbot/clawdbot" target="_blank">
+                        <i class="fab fa-github"></i> Clawdbot 官方
+                    </a>
+                    <a href="https://docs.clawd.bot" target="_blank">
+                        <i class="fas fa-book"></i> 官方文档
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>📝 本教程由热心博主整理 | 开源免费 | © 2024-2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

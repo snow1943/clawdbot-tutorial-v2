@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地部署教程 - Clawdbot 教程</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回首页</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="page-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                返回选择页面
+            </a>
+            <h1>💻 本地电脑部署教程</h1>
+            <p class="subtitle">在你自己电脑上运行 Clawdbot，完全免费</p>
+        </div>
+    </section>
+
+    <!-- 内容 -->
+    <section class="tutorial">
+        <div class="container">
+            <!-- 步骤导航 -->
+            <div class="step-nav">
+                <a href="#step1" class="step-link active">环境准备</a>
+                <a href="#step2" class="step-link">安装 Node.js</a>
+                <a href="#step3" class="step-link">克隆项目</a>
+                <a href="#step4" class="step-link">启动服务</a>
+                <a href="#step5" class="step-link">常见问题</a>
+            </div>
+
+            <!-- Step 1: 环境准备 -->
+            <div id="step1" class="tutorial-section">
+                <h2><span class="step-num">1</span> 环境准备</h2>
+                
+                <div class="prereq-box">
+                    <h3>📦 需要准备的东西</h3>
+                    <ul>
+                        <li>✅ 一台电脑（Windows / Mac / Linux 都可以）</li>
+                        <li>✅ 网络连接（需要下载软件）</li>
+                        <li>✅ GitHub 账号（用于获取源码）</li>
+                        <li>✅ AI API Key（可选，比如 OpenAI、Claude 等）</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <strong>💡 小提示</strong>
+                        <p>没有 API Key 也可以先装好运行起来，AI 功能会使用默认的本地模型。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: 安装 Node.js -->
+            <div id="step2" class="tutorial-section">
+                <h2><span class="step-num">2</span> 安装 Node.js</h2>
+                <p class="section-desc">Clawdbot 需要 Node.js 运行环境，根据你的系统选择安装方式：</p>
+
+                <div class="os-tabs">
+                    <button class="os-btn active" data-os="mac">🍎 Mac</button>
+                    <button class="os-btn" data-os="windows">🪟 Windows</button>
+                    <button class="os-btn" data-os="linux">🐧 Linux</button>
+                </div>
+
+                <div class="os-content">
+                    <!-- Mac -->
+                    <div class="os-panel active" id="mac">
+                        <div class="install-method">
+                            <h4>方式一：使用 Homebrew（推荐）</h4>
+                            <div class="code-block">
+                                <pre><code># 安装 Homebrew（如果没有）
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 安装 Node.js
+brew install node</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="install-method">
+                            <h4>方式二：直接下载安装包</h4>
+                            <p>访问 <a href="https://nodejs.org" target="_blank">nodejs.org</a>，下载 LTS 版本安装包，一路 Next 即可。</p>
+                        </div>
+                    </div>
+
+                    <!-- Windows -->
+                    <div class="os-panel" id="windows">
+                        <div class="install-method">
+                            <h4>直接下载安装包（最简单）</h4>
+                            <p>访问 <a href="https://nodejs.org" target="_blank">nodejs.org</a>，下载 LTS 版本安装包。</p>
+                            <div class="warning-box">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <p>安装时记得勾选 <strong>"Add to PATH"</strong>，否则可能找不到命令。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linux -->
+                    <div class="os-panel" id="linux">
+                        <div class="install-method">
+                            <h4>使用包管理器</h4>
+                            <div class="code-block">
+                                <pre><code># Ubuntu / Debian
+sudo apt update
+sudo apt install nodejs npm
+
+# CentOS / RHEL
+sudo yum install nodejs npm</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="install-method">
+                            <h4>使用 nvm（推荐，管理多版本更方便）</h4>
+                            <div class="code-block">
+                                <pre><code># 安装 nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# 重启终端，然后安装 Node.js LTS 版本
+nvm install --lts</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="verify-box">
+                    <h4>✅ 验证安装是否成功</h4>
+                    <div class="code-block">
+                        <pre><code>node -v   # 应该显示 v18.x.x 或 v20.x.x
+npm -v    # 应该显示版本号</code></pre>
+                    </div>
+                    <p>如果显示版本号，说明安装成功！🎉</p>
+                </div>
+            </div>
+
+            <!-- Step 3: 克隆项目 -->
+            <div id="step3" class="tutorial-section">
+                <h2><span class="step-num">3</span> 克隆项目</h2>
+                <p class="section-desc">把 Clawdbot 的代码下载到你电脑上。</p>
+
+                <div class="code-block">
+                    <pre><code># 创建工作目录
+mkdir -p ~/clawdbot
+cd ~/clawdbot
+
+# 克隆项目
+git clone https://github.com/clawdbot/clawdbot.git .
+
+# 切换到最新版本
+git checkout main</code></pre>
+                </div>
+
+                <div class="code-block">
+                    <pre><code># 安装依赖
+npm install -g pnpm
+pnpm install</code></pre>
+                </div>
+
+                <div class="tip-box">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>⏱️ 首次安装可能需要 3-5 分钟</strong>
+                        <p>取决于你的网络速度，耐心等待一下～</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: 启动服务 -->
+            <div id="step4" class="tutorial-section">
+                <h2><span class="step-num">4</span> 启动服务</h2>
+
+                <div class="code-block">
+                    <pre><code># 开发模式启动（支持热重载，改代码后自动重启）
+npm run dev</code></pre>
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>🎉 看到 "Server started on http://localhost:3000" 就说明成功了！</strong>
+                        <p>打开浏览器访问 <code>http://localhost:3000</code>，完成初始化配置。</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div>
+                        <strong>⚠️ 注意</strong>
+                        <p>关闭终端窗口后，服务就会停止。如果想让服务在后台运行，可以按 <code>Ctrl + C</code> 停止后，使用 <code>npm start</code> 重新启动。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: 常见问题 -->
+            <div id="step5" class="tutorial-section">
+                <h2><span class="step-num">5</span> 常见问题</h2>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>❓ npm install 失败了怎么办？</h4>
+                        <p>可能是网络问题，可以尝试：<br>
+                        1. 重试一次<br>
+                        2. 使用国内镜像源：<code>npm config set registry https://registry.npmmirror.com</code><br>
+                        3. 或者直接用 <code>pnpm install</code>，通常更稳定</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ 端口被占用了怎么办？</h4>
+                        <p>修改配置文件中的端口号，或者关闭占用端口的程序。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ 怎么关闭服务？</h4>
+                        <p>在终端按 <code>Ctrl + C</code> 即可停止服务。</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>❓ 怎么更新到新版本？</h4>
+                        <p>在项目目录下执行：<br><code>git pull && pnpm install && pnpm build</code></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 下一步 -->
+            <div class="next-steps">
+                <h3>🚀 下一步</h3>
+                <p>服务已经跑起来了！接下来你可以：</p>
+                <ul>
+                    <li>📖 访问 <a href="https://docs.clawd.bot" target="_blank">官方文档</a> 了解更多</li>
+                    <li>💬 加入 <a href="https://discord.gg/clawd" target="_blank">Discord 社区</a> 提问交流</li>
+                    <li>🐛 遇到问题可以 <a href="https://github.com/clawdbot/clawdbot/issues" target="_blank">提 Issue</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="../index.html" class="back-to-home">
+                    <i class="fas fa-arrow-left"></i>
+                    返回首页
+                </a>
+                <div class="footer-brand">
+                    <p>📝 本教程参考了 <a href="https://mp.weixin.qq.com/s/gRCZdwyK3xoD3VLrvxdDjQ" target="_blank">数字生命卡兹克</a>、<a href="https://mp.weixin.qq.com/s/4-xit1hBs42CQEzJZmxsVw" target="_blank">卡尔的AI沃茨</a> 等博主的分享</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
